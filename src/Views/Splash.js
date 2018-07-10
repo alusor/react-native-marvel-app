@@ -44,7 +44,7 @@ class Splash extends Component {
                         translateY: position
                     }] }}
                 >
-                    <Text style={styles.welcome}>{this.props.appName}</Text>
+                    <Text style={styles.welcome}>Marvel Heros</Text>
                 </Animated.View>
             </LinearGradient>
         );
