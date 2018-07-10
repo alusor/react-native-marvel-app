@@ -1,7 +1,7 @@
 import { createStore } from 'redux';
 
 const initialState = {
-    appName: 'platziapp'
+    appName: 'MARVEL HEROES'
 };
 
 const reducer = (state = initialState, action) => {
