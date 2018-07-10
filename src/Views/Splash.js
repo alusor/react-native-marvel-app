@@ -3,6 +3,7 @@ import { Animated, StyleSheet, Text } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
+import Heros from '../Actions/Heros';
 class Splash extends Component {
     static navigationOptions = {
         header: null
@@ -15,6 +16,8 @@ class Splash extends Component {
         }
     }
     componentDidMount() {
+        const getHeros = this.props.getHerosRequested;
+        getHeros();
         Animated.parallel([
             Animated.timing(                  
                 this.state.bounce,            
@@ -33,6 +36,7 @@ class Splash extends Component {
       }
     
     render() {
+        console.log(this.props);
         const position  = this.state.position.interpolate({
             inputRange: [0, 1],
             outputRange: [150, 0]  // 0 : 150, 0.5 : 75, 1 : 0
@@ -74,8 +78,10 @@ const styles = StyleSheet.create({
 
   const mapStateToProps = state => {
     return {
-      appName: state.appName
+      heros: state.heros
     }
   }
-
-export default connect(mapStateToProps)(Splash);
+const {getHerosRequested} = Heros.creators;
+export default connect(mapStateToProps, { 
+    getHerosRequested,
+ })(Splash);
