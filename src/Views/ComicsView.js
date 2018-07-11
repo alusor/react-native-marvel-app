@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
-import { Animated, StyleSheet, Text } from 'react-native';
+import { Animated, StyleSheet, Text, ActivityIndicator, FlatList } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
-import Heros from '../Actions/Heros';
-class Splash extends Component {
+import Comics from '../Actions/Comics';
+
+class ComicsView extends Component {
     static navigationOptions = {
         header: null
     };
@@ -16,8 +17,8 @@ class Splash extends Component {
         }
     }
     componentDidMount() {
-        const getHeros = this.props.getHerosRequested;
-        getHeros();
+        const getComics = this.props.getComicsRequested;
+        getComics();
         Animated.parallel([
             Animated.timing(                  
                 this.state.bounce,            
@@ -34,13 +35,25 @@ class Splash extends Component {
         ]).start();
 
       }
-    
+    navigate(item) {
+        this.props.navigation.navigate('ComicDetail');
+    }
+    renderItem = ({item, index}) => {
+        return (
+            <ComicCard imageStyle={{ borderRadius: 6 }} source={{uri: `${item.thumbnail.path}/portrait_uncanny.${item.thumbnail.extension}`}}>
+                <Touchable onPress={this.navigate.bind(this,'hey')}>
+                    <Text numberOfLines={2} key={index} style={styles.welcome}>{item.title}</Text>
+                </Touchable>
+            </ComicCard>
+        )};
+    keyExtractor = (item, index) => `${index}${item.id}`;
     render() {
         console.log(this.props);
         const position  = this.state.position.interpolate({
             inputRange: [0, 1],
-            outputRange: [150, 0]  // 0 : 150, 0.5 : 75, 1 : 0
+            outputRange: [150, 0]
           });
+        
         return (
             <LinearGradient colors={['#000', '#1e1e1e']} style={styles.container}>
                 <Animated.View
@@ -50,6 +63,14 @@ class Splash extends Component {
                 >
                     <Text style={styles.welcome}>Marvel Heros</Text>
                 </Animated.View>
+                {this.props.loading? <ActivityIndicator />:null}
+                <FlatList
+                    data={this.props.comics}
+                    renderItem={this.renderItem}
+                    extraData={this.props}
+                    keyExtractor={this.keyExtractor}
+                    numColumns={2}
+                />
             </LinearGradient>
         );
     }
@@ -64,7 +85,6 @@ const styles = StyleSheet.create({
     },
     welcome: {
       fontSize: 20,
-      textAlign: 'center',
       margin: 10,
       fontFamily: 'Poppins-Bold',
       color: 'white'
@@ -78,10 +98,26 @@ const styles = StyleSheet.create({
 
   const mapStateToProps = state => {
     return {
-      heros: state.heros
+        ...state.comics
     }
   }
-const {getHerosRequested} = Heros.creators;
+const {getComicsRequested} = Comics.creators;
+const { selectComic } = Comics.creators;
 export default connect(mapStateToProps, { 
-    getHerosRequested,
- })(Splash);
+    getComicsRequested,
+    selectComic
+ })(ComicsView);
+
+ const ComicCard = styled.ImageBackground`
+    width: 150px;
+    height: 250px;
+    margin: 5px;
+    border-radius: 6px;
+    
+ `;
+ const Touchable = styled.TouchableOpacity`
+    background-color: rgba(0,0,0,0.5);
+    flex: 1;
+    justify-content: flex-end;
+    border-radius: 6px;
+ `;

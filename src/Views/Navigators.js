@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { createBottomTabNavigator, createDrawerNavigator, createStackNavigator } from 'react-navigation';
-import Splash from './Splash';
+import Comics from './ComicsView';
+import ComicDetail from './ComicDetail';
 
 const MainNavigator = createStackNavigator({
-    Splash
+    Comics,
+    ComicDetail
 });
 
 

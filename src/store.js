@@ -14,7 +14,7 @@ const composedEnhancers = compose(
     applyMiddleware(...middleware),
     ...enhancers,
   );
-
 const store  = createStore(reducers, initialState,composedEnhancers);
 sagaMiddleware.run(sagas);
+
 export default store;
