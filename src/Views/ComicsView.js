@@ -13,10 +13,6 @@ class ComicsView extends Component {
     };
     constructor(props){
         super(props);
-        this.state = {
-            bounce: new Animated.Value(0),
-            position: new Animated.Value(0)
-        }
     }
     componentDidMount() {
         const getComics = this.props.getComicsRequested;
@@ -43,7 +39,7 @@ class ComicsView extends Component {
                 <Header title='Marvel Universe'/>
 
             <LinearGradient colors={['#000', '#1e1e1e']} style={styles.container}>
-                {this.props.loading? <ActivityIndicator />:null}
+                {this.props.loading? <ActivityIndicator />:
                 <FlatList
                     data={this.props.comics}
                     renderItem={this.renderItem}
@@ -53,7 +49,7 @@ class ComicsView extends Component {
                     style={{ paddingTop: 20 }}
                     onEndReachedThreshold={1}
                     onEndReached={() => console.log('cargar mas')}
-                />
+                />}
             </LinearGradient>
             </View>
         );
