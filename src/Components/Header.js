@@ -4,7 +4,7 @@ import { SafeAreaView } from 'react-navigation';
 import styled from 'styled-components';
 
 const Safe = styled(SafeAreaView)`
-    background-color: #b50f16;
+    background-color: #f0141e;
     position: relative;
     top: 0;
     left: 0;

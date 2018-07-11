@@ -9,7 +9,8 @@ import Card from '../Components/ComicCard';
 
 class ComicsView extends Component {
     static navigationOptions = {
-        header: null
+        header: null,
+        tabBarLabel: 'Inicio'
     };
     constructor(props){
         super(props);
