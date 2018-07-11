@@ -10,6 +10,8 @@ const Safe = styled(SafeAreaView)`
     left: 0;
     right: 0;
     flex-direction: row;
+    justify-content: center;
+    align-items: center;
 `;
 const Title = styled.Text`
     color: white;
@@ -23,12 +25,8 @@ const Title = styled.Text`
 
 
 export default (props) => (
-    <Safe
-        forceInset={{top: 'always'}}
-        style={{  
-        }}
-    >
-        <StatusBar  barStyle="light-content" />
+    <Safe>
+        <StatusBar barStyle="light-content" />
         <Title>{props.title}</Title>  
     </Safe>
 

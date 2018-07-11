@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { createBottomTabNavigator, createDrawerNavigator, createStackNavigator } from 'react-navigation';
+import { createTabNavigator, createDrawerNavigator, createStackNavigator } from 'react-navigation';
 import Comics from './ComicsView';
 import ComicDetail from './ComicDetail';
 import Account from './Account';
@@ -7,6 +7,9 @@ import Favorites from './Favorites';
 import { Image } from 'react-native';
 
 const comic = require('../Icons/comic.png');
+const hero = require('../Icons/heros.png');
+const favorites = require('../Icons/favorites.png');
+const account = require('../Icons/account.png');
 
 const ComicsNavigator = createStackNavigator({
     Comics,
@@ -25,13 +28,27 @@ ComicsNavigator.navigationOptions = {
 
 HerosNavigator.navigationOptions = {
     tabBarLabel: 'Heroes',
+    tabBarIcon: ({tintColor}) => (
+        <Image style={{ tintColor: 'white', width: 24, height: 24 }} source={ hero }/>
+    )
 }
 
-const Tab = createBottomTabNavigator({
+const Tab = createTabNavigator({
     ComicsNavigator,
     HerosNavigator,
-    Account,
-    Favorites
+    favorites: { screen: Favorites, navigationOptions: {
+        tabBarLabel: 'Favoritos',
+        tabBarIcon: ({tintColor}) => (
+            <Image style={{ tintColor: 'white', width: 24, height: 24 }} source={ favorites }/>
+        )
+    } },
+    profile: { screen: Account, navigationOptions: {
+        tabBarLabel: 'Perfil',
+        tabBarIcon: ({tintColor}) => (
+            <Image style={{ tintColor: 'white', width: 24, height: 24 }} source={ account }/>
+        )
+    } },
+    
 }, {
     tabBarOptions: {
         style: {
