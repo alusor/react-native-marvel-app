@@ -22,14 +22,14 @@ const HerosNavigator = createStackNavigator({
 ComicsNavigator.navigationOptions = {
     tabBarLabel: 'Comics',
     tabBarIcon: ({tintColor}) => (
-        <Image style={{ tintColor: 'white', width: 24, height: 24 }} source={ comic }/>
+        <Image style={{ tintColor, width: 24, height: 24 }} source={ comic }/>
     )
 }
 
 HerosNavigator.navigationOptions = {
     tabBarLabel: 'Heroes',
     tabBarIcon: ({tintColor}) => (
-        <Image style={{ tintColor: 'white', width: 24, height: 24 }} source={ hero }/>
+        <Image style={{ tintColor, width: 24, height: 24 }} source={ hero }/>
     )
 }
 
@@ -39,13 +39,13 @@ const Tab = createTabNavigator({
     favorites: { screen: Favorites, navigationOptions: {
         tabBarLabel: 'Favoritos',
         tabBarIcon: ({tintColor}) => (
-            <Image style={{ tintColor: 'white', width: 24, height: 24 }} source={ favorites }/>
+            <Image style={{ tintColor, width: 24, height: 24 }} source={ favorites }/>
         )
     } },
     profile: { screen: Account, navigationOptions: {
         tabBarLabel: 'Perfil',
         tabBarIcon: ({tintColor}) => (
-            <Image style={{ tintColor: 'white', width: 24, height: 24 }} source={ account }/>
+            <Image style={{ tintColor, width: 24, height: 24 }} source={ account }/>
         )
     } },
     
@@ -58,6 +58,8 @@ const Tab = createTabNavigator({
             color: 'white',
             fontFamily: 'Poppins-Regular'
         },
+        activeTintColor: 'white',
+        inactiveTintColor: '#a2a2a2',
         showIcon: true
     }
 });
