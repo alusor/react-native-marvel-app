@@ -9,9 +9,11 @@ const Safe = styled(SafeAreaView)`
     top: 0;
     left: 0;
     right: 0;
+    padding-top: ${ Platform.OS === 'android'? 12: 0 };
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    elevation: 3;
 `;
 const Title = styled.Text`
     color: white;
@@ -19,16 +21,12 @@ const Title = styled.Text`
     font-family: "Poppins-Bold";
     font-size: 20px;
     text-align: center;
-    flex: 1
-
+    
 `;
-
 
 export default (props) => (
     <Safe>
         <StatusBar barStyle="light-content" />
         <Title>{props.title}</Title>  
     </Safe>
-
-
 );

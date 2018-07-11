@@ -50,17 +50,24 @@ const Tab = createTabNavigator({
     } },
     
 }, {
+    tabBarPosition: 'bottom',
     tabBarOptions: {
         style: {
             backgroundColor: '#f0141e',
+            elevation: 3
         },
         labelStyle: {
             color: 'white',
-            fontFamily: 'Poppins-Regular'
+            fontFamily: 'Poppins-Regular',
+            fontSize: 10,
+            margin: 0
         },
         activeTintColor: 'white',
-        inactiveTintColor: '#a2a2a2',
-        showIcon: true
+        inactiveTintColor: 'white',
+        showIcon: true,
+        indicatorStyle: { height: 0 }
+        
+        
     }
 });
 

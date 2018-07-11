@@ -45,9 +45,10 @@ class ComicsView extends Component {
                     data={this.props.comics}
                     renderItem={this.renderItem}
                     extraData={this.props}
+                    contentContainerStyle={{ paddingBottom: 35 }}
                     keyExtractor={this.keyExtractor}
                     numColumns={2}
-                    style={{ paddingTop: 20 }}
+                    style={{ paddingTop: 20, paddingBottom: 20 }}
                     onEndReachedThreshold={1}
                     onEndReached={() => console.log('cargar mas')}
                 />}
@@ -81,7 +82,7 @@ const styles = StyleSheet.create({
         ...state.comics
     }
   }
-const {getComicsRequested} = Comics.creators;
+const { getComicsRequested } = Comics.creators;
 const { selectComic } = Comics.creators;
 export default connect(mapStateToProps, { 
     getComicsRequested,
