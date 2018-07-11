@@ -4,6 +4,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import Comics from '../Actions/Comics';
+import Card from '../Components/ComicCard';
 
 class ComicsView extends Component {
     static navigationOptions = {
@@ -19,20 +20,6 @@ class ComicsView extends Component {
     componentDidMount() {
         const getComics = this.props.getComicsRequested;
         getComics();
-        Animated.parallel([
-            Animated.timing(                  
-                this.state.bounce,            
-                {
-                  toValue: 1,                   
-                  duration: 1000,        
-                }),
-            Animated.timing(                  
-                this.state.position,            
-                {
-                  toValue: 1,                   
-                  duration: 1000,        
-                }),      
-        ]).start();
 
       }
     navigate(item) {
@@ -40,29 +27,19 @@ class ComicsView extends Component {
     }
     renderItem = ({item, index}) => {
         return (
-            <ComicCard imageStyle={{ borderRadius: 6 }} source={{uri: `${item.thumbnail.path}/portrait_uncanny.${item.thumbnail.extension}`}}>
-                <Touchable onPress={this.navigate.bind(this,'hey')}>
-                    <Text numberOfLines={2} key={index} style={styles.welcome}>{item.title}</Text>
-                </Touchable>
-            </ComicCard>
+            <Card delay={index}>
+                <ComicCard imageStyle={{ borderRadius: 6 }} source={{uri: `${item.thumbnail.path}/portrait_uncanny.${item.thumbnail.extension}`}}>
+                    <Touchable onPress={this.navigate.bind(this,'hey')}>
+                        <Text numberOfLines={2} key={index} style={styles.welcome}>{item.title}</Text>
+                    </Touchable>
+                </ComicCard>
+            </Card>
         )};
     keyExtractor = (item, index) => `${index}${item.id}`;
     render() {
-        console.log(this.props);
-        const position  = this.state.position.interpolate({
-            inputRange: [0, 1],
-            outputRange: [150, 0]
-          });
-        
         return (
             <LinearGradient colors={['#000', '#1e1e1e']} style={styles.container}>
-                <Animated.View
-                    style={{ opacity: this.state.bounce, transform:[{
-                        translateY: position
-                    }] }}
-                >
-                    <Text style={styles.welcome}>Marvel Heros</Text>
-                </Animated.View>
+                <Text style={styles.welcome}>Marvel Heros</Text>
                 {this.props.loading? <ActivityIndicator />:null}
                 <FlatList
                     data={this.props.comics}
