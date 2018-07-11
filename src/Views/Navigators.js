@@ -14,6 +14,8 @@ const account = require('../Icons/account.png');
 const ComicsNavigator = createStackNavigator({
     Comics,
     ComicDetail
+}, {
+    headerMode: 'none'
 });
 const HerosNavigator = createStackNavigator({
     ComicDetail

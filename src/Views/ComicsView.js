@@ -8,10 +8,6 @@ import Header from '../Components/Header';
 import Card from '../Components/ComicCard';
 
 class ComicsView extends Component {
-    static navigationOptions = {
-        header: null,
-        tabBarLabel: 'Inicio'
-    };
     constructor(props){
         super(props);
     }
@@ -48,7 +44,7 @@ class ComicsView extends Component {
                     contentContainerStyle={{ paddingBottom: 35 }}
                     keyExtractor={this.keyExtractor}
                     numColumns={2}
-                    style={{ paddingTop: 20, paddingBottom: 20 }}
+                    style={{ paddingTop: 20 }}
                     onEndReachedThreshold={1}
                     onEndReached={() => console.log('cargar mas')}
                 />}
