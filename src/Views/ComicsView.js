@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
-import { Animated, StyleSheet, Text, ActivityIndicator, FlatList } from 'react-native';
+import { Animated, StyleSheet, Text, ActivityIndicator, FlatList, View } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import Comics from '../Actions/Comics';
+import Header from '../Components/Header';
 import Card from '../Components/ComicCard';
 
 class ComicsView extends Component {
@@ -38,8 +39,10 @@ class ComicsView extends Component {
     keyExtractor = (item, index) => `${index}${item.id}`;
     render() {
         return (
+            <View style={{ flex:1 }}>
+                <Header title='Marvel Universe'/>
+
             <LinearGradient colors={['#000', '#1e1e1e']} style={styles.container}>
-                <Text style={styles.welcome}>Marvel Heros</Text>
                 {this.props.loading? <ActivityIndicator />:null}
                 <FlatList
                     data={this.props.comics}
@@ -47,8 +50,12 @@ class ComicsView extends Component {
                     extraData={this.props}
                     keyExtractor={this.keyExtractor}
                     numColumns={2}
+                    style={{ paddingTop: 20 }}
+                    onEndReachedThreshold={1}
+                    onEndReached={() => console.log('cargar mas')}
                 />
             </LinearGradient>
+            </View>
         );
     }
 }
@@ -58,7 +65,6 @@ const styles = StyleSheet.create({
       flex: 1,
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor: '#F5FCFF',
     },
     welcome: {
       fontSize: 20,

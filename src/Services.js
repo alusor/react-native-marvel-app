@@ -11,7 +11,6 @@ const BASE_URL = `http://gateway.marvel.com/v1/public/`;
 const autenticationString = `?ts=${ts}&apikey=${apikey}&hash=${hash}`;
 
 export async function getComics() {
-    console.log('obteniendo commics');
      return Axios({
             url: `${BASE_URL}comics${autenticationString}`,
             method: 'GET'

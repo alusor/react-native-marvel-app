@@ -7,8 +7,7 @@ function* getComicsData() {
     console.log("Holaaa");
     try {
         const data = yield call(getComics);
-        console.log(data.data.data.results);
-        console.log(comics.creators.getComicsCompleted(data.data.data.results));
+        console.log(data.data);
         yield put(comics.creators.getComicsCompleted(data.data.data.results));
     } catch(e){
         yield put(comics.creators.getComicsFailed(e));
@@ -16,6 +15,5 @@ function* getComicsData() {
     }
 }
 export function* comicsSaga() {
-    console.log("Llamado a saga")
     yield takeEvery(comics.types.GET_COMICS_REQUESTED, getComicsData);
 }
