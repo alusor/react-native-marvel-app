@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "129429691985",
+    "firebase_url": "https://modified-legacy-188217.firebaseio.com",
+    "project_id": "modified-legacy-188217",
+    "storage_bucket": "modified-legacy-188217.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:129429691985:android:cf902870742e2a93",
+        "android_client_info": {
+          "package_name": "com.platziapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "129429691985-dhdq2enjt7r7qnjc391fadsnpf5dhhrj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBF7UTAC8g1dL1qjyJk2coNhXgohQkqaBU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

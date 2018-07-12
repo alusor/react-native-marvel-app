@@ -28,6 +28,7 @@ class AnimatedLogo extends Component {
                         duration: 500,
                         delay: 0,
                         easing: Easing.bounce,
+                        
                       }),
                       Animated.timing(this.state.scale, {
                         toValue: .8,
