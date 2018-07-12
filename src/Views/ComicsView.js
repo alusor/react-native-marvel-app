@@ -15,7 +15,7 @@ class ComicsView extends Component {
       }
     navigate(item) {
         this.props.selectComic(item);
-        this.props.navigation.navigate('ComicDetail');
+        //this.props.navigation.navigate('ComicDetail');
 
     }
     renderItem = ({item, index}) => {
