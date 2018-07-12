@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux';
-import comics from './Comics';
+import Comics from './Comics';
+import Navigations from './Navigation';
 
 export default combineReducers({
-    comics
+    Comics,
+    Navigations
 });

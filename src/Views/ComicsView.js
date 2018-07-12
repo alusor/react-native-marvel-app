@@ -1,30 +1,29 @@
 import React, {Component} from 'react';
-import { Animated, StyleSheet, Text, ActivityIndicator, FlatList, View } from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
+import { ActivityIndicator, FlatList, View } from 'react-native';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import Comics from '../Actions/Comics';
+import Container from '../Components/Container';
 import Header from '../Components/Header';
 import Card from '../Components/ComicCard';
 
 class ComicsView extends Component {
-    constructor(props){
-        super(props);
-    }
     componentDidMount() {
         const getComics = this.props.getComicsRequested;
         getComics();
 
       }
     navigate(item) {
+        this.props.selectComic(item);
         this.props.navigation.navigate('ComicDetail');
+
     }
     renderItem = ({item, index}) => {
         return (
             <Card delay={index}>
                 <ComicCard imageStyle={{ borderRadius: 6 }} source={{uri: `${item.thumbnail.path}/portrait_uncanny.${item.thumbnail.extension}`}}>
-                    <Touchable onPress={this.navigate.bind(this,'hey')}>
-                        <Text numberOfLines={2} key={index} style={styles.welcome}>{item.title}</Text>
+                    <Touchable onPress={this.navigate.bind(this,item)}>
+                        <Text numberOfLines={2} key={index} >{item.title}</Text>
                     </Touchable>
                 </ComicCard>
             </Card>
@@ -34,48 +33,27 @@ class ComicsView extends Component {
         return (
             <View style={{ flex:1 }}>
                 <Header title='Marvel Universe'/>
-
-            <LinearGradient colors={['#000', '#1e1e1e']} style={styles.container}>
-                {this.props.loading? <ActivityIndicator />:
-                <FlatList
-                    data={this.props.comics}
-                    renderItem={this.renderItem}
-                    extraData={this.props}
-                    contentContainerStyle={{ paddingBottom: 35 }}
-                    keyExtractor={this.keyExtractor}
-                    numColumns={2}
-                    style={{ paddingTop: 20 }}
-                    onEndReachedThreshold={1}
-                    onEndReached={() => console.log('cargar mas')}
-                />}
-            </LinearGradient>
+                <Container>
+                    {this.props.loading? <ActivityIndicator />:
+                    <FlatList
+                        data={this.props.comics}
+                        renderItem={this.renderItem}
+                        extraData={this.props}
+                        contentContainerStyle={{ paddingBottom: 35 }}
+                        keyExtractor={this.keyExtractor}
+                        numColumns={2}
+                        style={{ paddingTop: 20 }}
+                        onEndReachedThreshold={1}
+                        onEndReached={() => console.log('cargar mas')}
+                    />}
+                </Container>
             </View>
         );
     }
 }
-
-const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
-    welcome: {
-      fontSize: 20,
-      margin: 10,
-      fontFamily: 'Poppins-Bold',
-      color: 'white'
-    },
-    instructions: {
-      textAlign: 'center',
-      color: '#e2e2e2',
-      marginBottom: 5,
-    },
-  });
-
   const mapStateToProps = state => {
     return {
-        ...state.comics
+        ...state.Comics
     }
   }
 const { getComicsRequested } = Comics.creators;
@@ -98,3 +76,9 @@ export default connect(mapStateToProps, {
     justify-content: flex-end;
     border-radius: 6px;
  `;
+const Text = styled.Text`
+    font-size: 20;
+    margin: 20px;
+    font-family: 'Poppins-Bold';
+    color: white;
+`;

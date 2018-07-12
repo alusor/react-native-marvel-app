@@ -4,9 +4,7 @@ const initialState = {
     comics: [],
     loading: false,
     selectedId: '',
-    selectedHero: {
-        loading: false,
-    },
+    selectedComic: {},
     error: null
 };
 
@@ -20,6 +18,9 @@ const comicsReducer =(state = initialState, action) => {
             return { ...state, comics: action.payload, loading: false };
         case types.GET_COMICS_FAILED:
             return { ...state, loading: false, error: true };
+        case types.SELECT_COMIC: 
+            console.log(action.payload);
+            return { ...state, selectedComic: action.payload }
         default: 
             return state;
     }

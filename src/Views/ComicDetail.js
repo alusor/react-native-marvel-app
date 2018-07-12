@@ -2,12 +2,17 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import { View } from 'react-native';
 
-class ComicDetail extends Component {
-    render() {
-        return (
-            <View />
-        );
-    }
-}
+const ComicDetail = (props) => {
+    console.log(props);
 
-export default connect()(ComicDetail);
+    return (<View/>);
+};
+
+const mapStateToProps = state => {
+    console.log(state);
+    return {
+        comic: state.Comics.selectedComic
+    };
+};
+
+export default connect(mapStateToProps)(ComicDetail);
