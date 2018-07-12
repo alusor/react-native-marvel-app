@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { createTabNavigator, createDrawerNavigator, createStackNavigator } from 'react-navigation';
+import Splash from './Splash/Splash';
 import Comics from './ComicsView';
 import ComicDetail from './ComicDetail';
 import Account from './Account';
@@ -18,7 +19,7 @@ const ComicsNavigator = createStackNavigator({
     headerMode: 'none'
 });
 const HerosNavigator = createStackNavigator({
-    ComicDetail
+    Favorites
 });
 
 ComicsNavigator.navigationOptions = {
@@ -68,9 +69,14 @@ const Tab = createTabNavigator({
         inactiveTintColor: 'white',
         showIcon: true,
         indicatorStyle: { height: 0 }
-        
-        
     }
 });
 
-export default Tab;
+const MainStack = createStackNavigator({
+    Splash,
+    Tab
+}, {
+    headerMode: 'none'
+});
+
+export default MainStack;

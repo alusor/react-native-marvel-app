@@ -19,7 +19,6 @@ const comicsReducer =(state = initialState, action) => {
         case types.GET_COMICS_FAILED:
             return { ...state, loading: false, error: true };
         case types.SELECT_COMIC: 
-            console.log(action.payload);
             return { ...state, selectedComic: action.payload }
         default: 
             return state;
