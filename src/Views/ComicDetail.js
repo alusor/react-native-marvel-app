@@ -8,7 +8,7 @@ import Header from '../Components/Header';
 const ComicDetail = (props) => {
     return (
         <View style={{ flex:1 }}>
-            <Header leftAction={() => props.navigation.goBack()} left color='black' title={props.comic.title} />
+            <Header leftAction={() => props.navigation.goBack()} left color='transparent' title={props.comic.title} />
             <Container>
             </Container>
         </View>

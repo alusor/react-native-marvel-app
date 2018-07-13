@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { ActivityIndicator, FlatList, View } from 'react-native';
+import { FlatList } from 'react-native';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import Comics from '../Actions/Comics';
@@ -30,25 +30,26 @@ class ComicsView extends Component {
             </Card>
         )};
     keyExtractor = (item, index) => `${index}${item.id}`;
+    renderFooter = () => this.props.loading? <AnimatedLogo />: false;
     render() {
         return (
-            <View style={{ flex:1 }}>
-                <Header title='Marvel Universe'/>
+                
                 <Container>
-                    {this.props.loading? <AnimatedLogo />:
+                    <Header title='Marvel Universe'/>
                     <FlatList
                         data={this.props.comics}
                         renderItem={this.renderItem}
                         extraData={this.props}
-                        contentContainerStyle={{ paddingBottom: 35 }}
+                        contentContainerStyle={{ paddingBottom: 35, justifyContent: 'center', alignItems: 'center'}}
+                        style={{flex: 1 }}
                         keyExtractor={this.keyExtractor}
                         numColumns={2}
                         style={{ paddingTop: 20 }}
                         onEndReachedThreshold={1}
                         onEndReached={() => console.log('cargar mas')}
-                    />}
+                        ListFooterComponent={this.renderFooter}
+                    />
                 </Container>
-            </View>
         );
     }
 }

@@ -4,8 +4,6 @@ import styled from 'styled-components';
 
 const Container = styled(LinearGradient)`
     flex: 1;
-    justify-content: center;
-    align-items: center;
 `;
 
 export default ({children}) => (
