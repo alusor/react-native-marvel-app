@@ -8,7 +8,6 @@ const Logo = styled.Image`
     width: 64px;
     height: 64px;
 `;
-
 class AnimatedLogo extends Component {
     state = {
         scale: new Animated.Value(.8),
