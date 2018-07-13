@@ -5,17 +5,13 @@ import Session from '../Actions/Session';
 
 
 
-class Login extends Component {
-    componentDidMount(){
-        console.log(this.props);
-    }
-    render() {
+const Login = (props) => {
+
         return(
             <View>
-                <Button title="Login con facebook" onPress={() => this.props.userLogin()} />
+                <Button title="Login con facebook" onPress={() => props.userLogin()} />
             </View>
         );
-    }
 }
 
 const mapStateToProps = state => {

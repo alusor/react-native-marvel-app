@@ -39,7 +39,11 @@ function * userLogin() {
     const user = yield call(facebookLogin);
     yield put(session.creators.userLoginComplete(user));
 }
+function * completeLogin() {
+    yield put(NavigationActions.navigate({ routeName: 'Tab' }));
+}
 
   export function * loginSaga() {
       yield takeEvery(session.types.USER_LOGIN, userLogin);
+      yield takeEvery(session.types.USER_LOGIN_COMPLETE, completeLogin);
   }

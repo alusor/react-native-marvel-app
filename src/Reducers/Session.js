@@ -7,7 +7,6 @@ const initialState = {
 };
 
 const sessionReducer = (state = initialState, action) => {
-    console.log(action);
     const { type } = action;
     const { types } = Session;
     switch(type) {
