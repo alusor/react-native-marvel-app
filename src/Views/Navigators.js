@@ -67,4 +67,4 @@ const MainStack = createStackNavigator({
     headerMode: 'none'
 });
 
-export default MainStack;
+export default Tab;
