@@ -5,6 +5,7 @@ import Comics from './ComicsView';
 import ComicDetail from './ComicDetail';
 import Account from './Account';
 import Favorites from './Favorites';
+import Login from './Login';
 import { Image } from 'react-native';
 
 const comic = require('../Icons/comic.png');
@@ -61,10 +62,11 @@ const Tab = createBottomTabNavigator({
 });
 
 const MainStack = createStackNavigator({
+    Login,
     Splash,
     Tab
 }, {
     headerMode: 'none'
 });
 
-export default Tab;
+export default MainStack;
