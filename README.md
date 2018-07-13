@@ -12,9 +12,11 @@
 
 [react-native-firebase](https://github.com/invertase/react-native-firebase)
 > **Nota:** Se utilizo el modulo de cloud messaging para notificaciones push.
-> Utilizar este paquete implica actualizar graddle, actualmente hay un bug con la versión: 3.1.3, es necesario agregar *android.enableAapt2=false* en *app/gradle.properties*
+> Utilizar este paquete implica actualizar graddle, actualmente hay un bug con gradle-4.4 que trata de convertir los recursos a .flat, es necesario agregar *android.enableAapt2=false* en *app/gradle.properties*
 > 
+
 [react-native-linear-gradient](https://github.com/react-native-community/react-native-linear-gradient)
+
 [react-native-vector-icons](https://github.com/oblador/react-native-vector-icons)
 ## CI (App Center by Microsoft)
 - La versión del entorno no es compatible con la ultima versión de React Native 
