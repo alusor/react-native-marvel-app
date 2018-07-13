@@ -137,11 +137,13 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-fbsdk')
     implementation project(':react-native-firebase')
     implementation "com.google.android.gms:play-services-base:15.0.1"
     implementation "com.google.firebase:firebase-core:16.0.1"
     implementation "com.google.firebase:firebase-messaging:17.1.0"
     implementation 'me.leolin:ShortcutBadger:1.1.21@aar'
+    implementation "com.google.firebase:firebase-auth:16.0.2"
     implementation project(':react-native-vector-icons')
     implementation project(':react-native-linear-gradient')
     implementation fileTree(dir: "libs", include: ["*.jar"])
