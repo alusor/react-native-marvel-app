@@ -6,8 +6,8 @@ const Container = styled(LinearGradient)`
     flex: 1;
 `;
 
-export default ({children}) => (
-    <Container colors={['#000', '#1e1e1e']}>
+export default ({children, style}) => (
+    <Container style={style} colors={['#000', '#1e1e1e']}>
         {children}
     </Container>
 );

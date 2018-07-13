@@ -39,7 +39,7 @@ const Action = styled.TouchableOpacity`
 `;
 export default (props) => (
     <Safe color={props.color}>
-        <StatusBar barStyle="light-content" />
+        <StatusBar  backgroundColor='#f0141e' barStyle="light-content" />
         <Content>
             <ActionContent>
                 {props.left? <Action onPress={props.leftAction}><Icon name="ios-arrow-back-outline" size={30} color="white" /></Action>: null}

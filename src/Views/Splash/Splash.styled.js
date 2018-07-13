@@ -53,7 +53,7 @@ class AnimatedLogo extends Component {
           });
         const {opacity} = this.state;
         return (
-            <Animated.View style={{ opacity, transform: [{scale: this.state.scale}, { rotateX: rotation }], }}>
+            <Animated.View style={{ alignSelf: 'center', opacity, transform: [{scale: this.state.scale}, { rotateX: rotation }], }}>
                 <Logo source={logo}/>
             </Animated.View>
         );
