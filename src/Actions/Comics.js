@@ -9,13 +9,10 @@ const getComicsRequested = () => ({
     type: GET_COMICS_REQUESTED,
 });
 
-const getComicsCompleted = comics => {
-    console.log(comics);
-    return {
+const getComicsCompleted = comics => ({
         type: GET_COMICS_COMPLETED,
         payload: comics,
-    }
-};
+});
 
 const getComicsFailed = error => ({
     type: GET_COMICS_FAILED,

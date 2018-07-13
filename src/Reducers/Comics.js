@@ -8,7 +8,7 @@ const initialState = {
     error: null
 };
 
-const comicsReducer =(state = initialState, action) => {
+const comicsReducer = (state = initialState, action) => {
     const { type } = action;
     const { types } = Comics;
     switch(type) {
