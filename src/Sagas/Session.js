@@ -1,6 +1,6 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import session from '../Actions/Session';
-import { NavigationActions } from 'react-navigation';
+import { NavigationActions, StackActions } from 'react-navigation';
 import { AccessToken, LoginManager, GraphRequest, GraphRequestManager } from 'react-native-fbsdk';
 import firebase from 'react-native-firebase';
 
@@ -76,7 +76,7 @@ function * userLogin() {
         yield put(session.creators.userLoginFailed())
 }
 function * completeLogin() {
-    yield put(NavigationActions.navigate({ routeName: 'Tab' }));
+    yield put( NavigationActions.navigate({routeName: 'Tab'}));
 }
 
 async function logout() {
@@ -89,9 +89,8 @@ async function logout() {
 }
 
 function * userLogout() {
-  console.log('oki');
   yield call(logout);
-  yield put(NavigationActions.navigate({ routeName: 'Login' }));
+  yield put(StackActions.popToTop());
   
 }
 
