@@ -1,5 +1,4 @@
-import { call, fork, put, select } from 'redux-saga/effects';
-import {takeEvery} from 'redux-saga';
+import { call, put, takeEvery } from 'redux-saga/effects';
 import { NavigationActions } from 'react-navigation';
 import comics from '../Actions/Comics';
 import {getComics} from '../Services';
@@ -7,7 +6,6 @@ import {getComics} from '../Services';
 function* getComicsData() {
     try {
         const data = yield call(getComics);
-        console.table(data.data);
         yield put(comics.creators.getComicsCompleted(data.data.data.results));
     } catch(e) {
         yield put(comics.creators.getComicsFailed(e));

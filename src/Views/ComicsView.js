@@ -6,6 +6,7 @@ import Comics from '../Actions/Comics';
 import Container from '../Components/Container';
 import Header from '../Components/Header';
 import Card from '../Components/ComicCard';
+import { AnimatedLogo } from './Splash/Splash.styled';
 
 class ComicsView extends Component {
     componentDidMount() {
@@ -34,7 +35,7 @@ class ComicsView extends Component {
             <View style={{ flex:1 }}>
                 <Header title='Marvel Universe'/>
                 <Container>
-                    {this.props.loading? <ActivityIndicator />:
+                    {this.props.loading? <AnimatedLogo />:
                     <FlatList
                         data={this.props.comics}
                         renderItem={this.renderItem}
