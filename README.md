@@ -24,8 +24,9 @@
 [react-native-linear-gradient](https://github.com/react-native-community/react-native-linear-gradient)
 
 [react-native-vector-icons](https://github.com/oblador/react-native-vector-icons)
+
 ## CI (App Center by Microsoft)
-- La versión del entorno no es compatible con la ultima versión de React Native 
+- La versión de node instalada en el entorno no es compatible con la ultima versión de React Native 
 - Se creo un script post clone para actualizar la versión de node. 
 - KeyStore y claves para firmado de release.
 - Configuración de acceso al API de google console para la publicación automatica.

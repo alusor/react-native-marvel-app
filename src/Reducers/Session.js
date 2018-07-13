@@ -17,7 +17,7 @@ const sessionReducer = (state = initialState, action) => {
         case types.USER_LOGIN_FAILED:
             return { ...state, loading: false, error: true };
         case types.USER_LOGOUT: 
-            return { initialState };
+            return { ...state };
         default:
             return state;
     }
