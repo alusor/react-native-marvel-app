@@ -9,7 +9,7 @@ async function facebookLogin() {
       const result = await LoginManager.logInWithReadPermissions(['public_profile', 'email']);
   
       if (result.isCancelled) {
-        throw new Error('User cancelled request'); // Handle this however fits the flow of your app
+        throw new Error('User cancelled request');
       }
   
       console.log(`Login success with permissions: ${result.grantedPermissions.toString()}`);
@@ -18,7 +18,7 @@ async function facebookLogin() {
       const data = await AccessToken.getCurrentAccessToken();
   
       if (!data) {
-        throw new Error('Something went wrong obtaining the users access token'); // Handle this however fits the flow of your app
+        throw new Error('Something went wrong obtaining the users access token');
       }
   
       // create a new firebase credential with the token
@@ -31,13 +31,17 @@ async function facebookLogin() {
       return currentUser;
     } catch (e) {
       console.error(e);
+      return null;
     }
   }
 
 function * userLogin() {
     console.log('login saga');
     const user = yield call(facebookLogin);
-    yield put(session.creators.userLoginComplete(user));
+    if(user) {
+        yield put(session.creators.userLoginComplete(user));
+    }
+        yield put(session.creators.userLoginFailed())
 }
 function * completeLogin() {
     yield put(NavigationActions.navigate({ routeName: 'Tab' }));
