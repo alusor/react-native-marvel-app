@@ -3,8 +3,8 @@
 [![Build status](https://build.appcenter.ms/v0.1/apps/1aa82513-9765-4283-a581-d258bb1719c9/branches/master/badge)](https://appcenter.ms)
 # Ejecutar
 
-	git clone https://github.com/alusor/platzi.git
-	cd platzi
+	git clone https://github.com/alusor/react-native-marvel-app.git
+	cd react-native-marvel-app
 	yarn 
 	react-native run-android
 
@@ -14,6 +14,8 @@
 > **Nota:** Se utilizo el modulo de cloud messaging para notificaciones push.
 > Utilizar este paquete implica actualizar graddle, actualmente hay un bug con gradle-4.4 que trata de convertir los recursos a .flat, es necesario agregar *android.enableAapt2=false* en *app/gradle.properties*
 > 
+[react-native-fbsdk](https://github.com/facebook/react-native-fbsdk)
+> Se integro y configuro para usarse en conjunto del social auth de firebase
 
 [react-native-linear-gradient](https://github.com/react-native-community/react-native-linear-gradient)
 
