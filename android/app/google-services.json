@@ -8,9 +8,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:129429691985:android:cf902870742e2a93",
+        "mobilesdk_app_id": "1:129429691985:android:79e29be5e89b3e4c",
         "android_client_info": {
-          "package_name": "com.platziapp"
+          "package_name": "com.alusorstroke.marveluniverse"
         }
       },
       "oauth_client": [

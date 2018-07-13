@@ -1,4 +1,4 @@
-package com.platziapp;
+package com.alusorstroke.marveluniverse;
 
 import android.app.Application;
 
