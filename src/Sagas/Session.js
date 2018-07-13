@@ -3,7 +3,6 @@ import session from '../Actions/Session';
 import { NavigationActions } from 'react-navigation';
 import { AccessToken, LoginManager, GraphRequest, GraphRequestManager } from 'react-native-fbsdk';
 import firebase from 'react-native-firebase';
-import axios from 'axios';
 
 async function facebookLogin() {
     try {
@@ -80,7 +79,24 @@ function * completeLogin() {
     yield put(NavigationActions.navigate({ routeName: 'Tab' }));
 }
 
-  export function * loginSaga() {
+async function logout() {
+  try{
+    await firebase.auth().signOut();
+  } catch(e){
+    return true;
+  } 
+  return true;
+}
+
+function * userLogout() {
+  console.log('oki');
+  yield call(logout);
+  yield put(NavigationActions.navigate({ routeName: 'Login' }));
+  
+}
+
+export function * loginSaga() {
       yield takeEvery(session.types.USER_LOGIN, userLogin);
       yield takeEvery(session.types.USER_LOGIN_COMPLETE, completeLogin);
+      yield takeEvery(session.types.USER_LOGOUT, userLogout);
   }

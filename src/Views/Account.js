@@ -1,7 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
+import Session from '../Actions/Session';
 import Container from '../Components/Container'
+import Header from '../Components/Header';
 import { connect } from 'react-redux';
+import { Button } from 'react-native';
 
 const Text = styled.Text`
     color: white;
@@ -16,17 +19,35 @@ const Profile = styled.Image`
     border-radius: 64px;
     margin: 30px;
 `;  
-
+const Bottom = styled.View`
+    flex: 1;
+    justify-content: center;
+    margin-bottom: 30px;
+`;
+const Content = styled.View`
+    margin-horizontal: 15px;
+    flex: 1;
+`;
 const Account = (props) => {
     const { _user } = props.user.user; 
     return (
-    <Container>
+    <Container >
+        <Header title='Perfil'/>
+        <Content>
         <Profile source={{ uri: props.user.getImage }}/>
         <Text>{_user.displayName}</Text>
+        <Bottom>
+            <Button onPress={() => props.userLogout()} color='#f0141e' title="Cerrar sesión" />
+        </Bottom>
+        </Content>
     </Container>
 )};
+
 const mapStateToProps = state => ({
     ...state.Session
 });
 
-export default connect(mapStateToProps)(Account);
+const {userLogout} = Session.creators;
+export default connect(mapStateToProps, {
+    userLogout
+})(Account);
