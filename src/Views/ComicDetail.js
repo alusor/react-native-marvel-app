@@ -16,18 +16,19 @@ function share(title, url) {
 
 const ComicDetail = (props) => {
     const { comic, addToFavorites, favorite } = props;
-    console.log(comic);
     const color = favorite? '#f0141e' : 'white';
+    const back = () => props.navigation.goBack();
+
     return (
             <Container>
-            <Header leftAction={() => props.navigation.goBack()} left color='transparent' />
+            <Header leftAction={back} left color='transparent' />
                 <Content>
                     <ScrollView>
                     <View style={{ flexDirection: 'row' }}>
                         <View style={{ flex: 1, justifyContent: 'flex-end', paddingBottom: 5 }}>
                             <Title>{comic.title}</Title>
                             <View style={{ flex: 1 , flexDirection: 'row', alignItems: 'flex-end', justifyContent: 'space-around', padding: 10 }}>
-                                <TouchableOpacity onPress={() => addToFavorites(comic.id)}>
+                                <TouchableOpacity onPress={() => addToFavorites(comic)}>
                                 <Icon size={30} color={color} name='md-heart' />
                                 </TouchableOpacity>
                                 <TouchableOpacity onPress={() => share(comic.title,comic.urls[0].url)}>
