@@ -11,7 +11,7 @@ const Safe = styled(SafeAreaView)`
     top: 0;
     left: 0;
     right: 0;
-    padding-top: ${ Platform.OS === 'android'? 12: 0 };
+    padding-vertical: ${ Platform.OS === 'android'? 6: 0 };
     elevation: 3;
 `;
 const Title = styled.Text`
@@ -39,7 +39,7 @@ const Action = styled.TouchableOpacity`
 `;
 export default (props) => (
     <Safe color={props.color}>
-        <StatusBar  backgroundColor='#f0141e' barStyle="light-content" />
+        <StatusBar  backgroundColor='#ba0911' barStyle="light-content" />
         <Content>
             <ActionContent>
                 {props.left? <Action onPress={props.leftAction}><Icon name="ios-arrow-back-outline" size={30} color="white" /></Action>: null}

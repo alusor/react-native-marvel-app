@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 import Session from '../Actions/Session';
 import {AnimatedLogo} from './Splash/Splash.styled';
-import { Copy, Button, Text } from '../Components/UtilComponents';
+import { Copy, Button, Text, ButtonText } from '../Components/UtilComponents';
 
 const Icon = require('../Icons/applogo.png');
 
@@ -17,7 +17,7 @@ const Image = styled.Image`
 `;
 
 const Login = (props) => {
-        const logo = props.loading? <AnimatedLogo /> : <Button onPress={() => props.userLogin()}><Text>Comenzar</Text></Button>;
+        const logo = props.loading? <AnimatedLogo /> : <Button onPress={() => props.userLogin()}><ButtonText>Comenzar</ButtonText></Button>;
         return(
             <Container >
                 <View style={{ justifyContent: 'center', flex: 1, paddingHorizontal: 15,  }}>

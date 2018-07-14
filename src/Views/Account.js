@@ -4,8 +4,7 @@ import Session from '../Actions/Session';
 import Container from '../Components/Container'
 import Header from '../Components/Header';
 import { connect } from 'react-redux';
-import { Button } from 'react-native';
-import { Content } from '../Components/UtilComponents';
+import { Content, ButtonText, Button } from '../Components/UtilComponents';
 
 
 const Text = styled.Text`
@@ -36,7 +35,9 @@ const Account = (props) => {
         <Profile source={{ uri: props.user.getImage }}/>
         <Text>{_user.displayName}</Text>
         <Bottom>
-            <Button onPress={() => props.userLogout()} color='#f0141e' title="Cerrar sesión" />
+            <Button onPress={() => props.userLogout()}>
+                <ButtonText>Cerrar sesión</ButtonText>
+            </Button>
         </Bottom>
         </Content>
     </Container>

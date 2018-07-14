@@ -5,7 +5,6 @@ width: 150px;
 height: 250px;
 margin: 5px;
 border-radius: 6px;
-
 `;
 
 const Title = styled.Text`
@@ -37,12 +36,17 @@ const Button = styled.TouchableOpacity`
     align-items: center;
     padding: 8px;
 `;
-
+const ButtonText = styled.Text`
+    color: white;
+    font-family: "Poppins-Bold";
+    font-size: 16px;
+`;
 export {
     Title,
     Content,
     ComicCard,
     Text,
     Copy,
-    Button
+    Button,
+    ButtonText
 };
