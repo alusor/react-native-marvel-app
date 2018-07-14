@@ -1,14 +1,15 @@
 import { call, put, takeEvery, select } from 'redux-saga/effects';
 import { NavigationActions } from 'react-navigation';
 import comics from '../Actions/Comics';
-import { setFavorites, getComics} from '../Services';
+import { setFavorites, getComics, getFavorites} from '../Services';
 
 const favorites = state => state.Comics.favorites;
 
 function* getComicsData() {
     try {
         const data = yield call(getComics);
-        yield put(comics.creators.getComicsCompleted(data.data.data.results));
+        const fav = yield call(getFavorites);
+        yield put(comics.creators.getComicsCompleted({ comics: data.data.data.results, favorites: fav }));
     } catch(e) {
         yield put(comics.creators.getComicsFailed(e));
         console.log(e);

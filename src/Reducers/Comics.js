@@ -17,14 +17,15 @@ const comicsReducer = (state = initialState, action) => {
         case types.GET_COMICS_REQUESTED: 
             return {...state, loading: true };
         case types.GET_COMICS_COMPLETED:
-            return { ...state, comics: action.payload, loading: false };
+            return { ...state, comics: action.payload.comics, favorites: action.payload.favorites, loading: false };
         case types.GET_COMICS_FAILED:
             return { ...state, loading: false, error: true };
         case types.SELECT_COMIC: 
             let favorite = false;
-            if(state.favorites.indexOf(action.payload) !== -1){
+            state.favorites.filter(comic => comic.id === action.payload.id? favorite=true:null );
+            /*if(state.favorites.indexOf(action.payload) !== -1){
                 favorite = true;
-            }
+            }*/
             return { ...state, selectedComic: action.payload, selectedComicFavorite: favorite };
         case types.ADD_TO_FAVORITES_COMIC:
             if(state.favorites.indexOf(action.payload)=== -1) {
