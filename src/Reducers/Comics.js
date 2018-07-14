@@ -22,7 +22,7 @@ const comicsReducer = (state = initialState, action) => {
             return { ...state, loading: false, error: true };
         case types.SELECT_COMIC: 
             let favorite = false;
-            if(state.favorites.indexOf(action.payload.id) !== -1){
+            if(state.favorites.indexOf(action.payload) !== -1){
                 favorite = true;
             }
             return { ...state, selectedComic: action.payload, selectedComicFavorite: favorite };
@@ -33,6 +33,7 @@ const comicsReducer = (state = initialState, action) => {
                 const newFavorites = state.favorites.filter(id => id !== action.payload);
                 return {...state, favorites: newFavorites, selectedComicFavorite: false}
             }
+        
         default: 
             return state;
     }

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { createBottomTabNavigator, createStackNavigator } from 'react-navigation';
-import Splash from './Splash/Splash';
 import Comics from './ComicsView';
 import ComicDetail from './ComicDetail';
 import Account from './Account';
@@ -56,7 +55,6 @@ const Tab = createBottomTabNavigator({
 
 const MainStack = createStackNavigator({
     Login,
-    Splash,
     ComicDetail,
     Tab
 }, {
