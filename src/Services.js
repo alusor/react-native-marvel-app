@@ -18,9 +18,10 @@ async function getComics() {
 }
 
 async function setFavorites(data) {
+    console.log(data);
     const user = firebase.auth().currentUser;
     console.log(user.uid);
-    const tmp = ref.collection('Favoritos').doc(user.uid);
+    const tmp = ref.collection('Favoritos').doc(user.uid).set(data);
     console.log(tmp)
 
 }
