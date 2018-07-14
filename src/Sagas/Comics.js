@@ -1,7 +1,7 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import { NavigationActions } from 'react-navigation';
 import comics from '../Actions/Comics';
-import {getComics} from '../Services';
+import { setFavorites, getComics} from '../Services';
 
 
 function* getComicsData() {
@@ -18,7 +18,7 @@ function * navigateToComic() {
     yield put(NavigationActions.navigate({ routeName: 'ComicDetail' }));
 } 
 function * storeFavorites() {
-
+    yield call(setFavorites);
 }
 export function* comicsSaga() {
     yield takeEvery(comics.types.GET_COMICS_REQUESTED, getComicsData);

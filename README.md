@@ -16,8 +16,11 @@
 
 [react-native-firebase](https://github.com/invertase/react-native-firebase)
 > **Nota:** Se utilizo el modulo de cloud messaging para notificaciones push.
+>
 > Se utilizo el modulo de auth en conjunto con facebook.
+>
 > Se utilizo el modulo de firestore.
+>
 > Utilizar este paquete implica actualizar graddle, actualmente hay un bug con gradle-4.4 que trata de convertir los recursos a .flat, es necesario agregar *android.enableAapt2=false* en *app/gradle.properties*
 > 
 [react-native-fbsdk](https://github.com/facebook/react-native-fbsdk)
