@@ -9,7 +9,8 @@ async function facebookLogin() {
       const result = await LoginManager.logInWithReadPermissions(['public_profile', 'email']);
   
       if (result.isCancelled) {
-        throw new Error('User cancelled request');
+        return null;
+        //throw new Error('User cancelled request');
       }
   
       console.log(`Login success with permissions: ${result.grantedPermissions.toString()}`);
@@ -18,7 +19,7 @@ async function facebookLogin() {
       const data = await AccessToken.getCurrentAccessToken();
       
       if (!data) {
-        throw new Error('Something went wrong obtaining the users access token');
+        return null;
       }
   
       // create a new firebase credential with the token
