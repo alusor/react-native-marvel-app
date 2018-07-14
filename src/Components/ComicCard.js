@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Animated, Easing} from 'react-native';
+import { Animated } from 'react-native';
 
 export default class extends Component {
     state = {

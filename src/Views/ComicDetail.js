@@ -1,10 +1,11 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import { ScrollView, View, Linking, Button, TouchableOpacity, Share } from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
+import Comics from '../Actions/Comics';
 import Container from '../Components/Container'; 
 import Header from '../Components/Header';
 import { Title, Content, ComicCard, Text, Copy } from '../Components/UtilComponents';
-import Icon from 'react-native-vector-icons/Ionicons';
 
 function share(title, url) {
     Share.share({
@@ -14,8 +15,9 @@ function share(title, url) {
 };  
 
 const ComicDetail = (props) => {
-    const { comic } = props;
+    const { comic, addToFavorites, favorite } = props;
     console.log(comic);
+    const color = favorite? '#f0141e' : 'white';
     return (
             <Container>
             <Header leftAction={() => props.navigation.goBack()} left color='transparent' />
@@ -25,8 +27,8 @@ const ComicDetail = (props) => {
                         <View style={{ flex: 1, justifyContent: 'flex-end', paddingBottom: 5 }}>
                             <Title>{comic.title}</Title>
                             <View style={{ flex: 1 , flexDirection: 'row', alignItems: 'flex-end', justifyContent: 'space-around', padding: 10 }}>
-                                <TouchableOpacity>
-                                <Icon size={30} color='#f0141e' name='md-heart' />
+                                <TouchableOpacity onPress={() => addToFavorites(comic.id)}>
+                                <Icon size={30} color={color} name='md-heart' />
                                 </TouchableOpacity>
                                 <TouchableOpacity onPress={() => share(comic.title,comic.urls[0].url)}>
                                 <Icon size={30} color='#f0141e' name='md-share' />
@@ -49,8 +51,13 @@ const ComicDetail = (props) => {
 
 const mapStateToProps = state => {
     return {
-        comic: state.Comics.selectedComic
+        comic: state.Comics.selectedComic,
+        favorite: state.Comics.selectedComicFavorite
     };
 };
 
-export default connect(mapStateToProps)(ComicDetail);
+const { addToFavorites } = Comics.creators;
+
+export default connect(mapStateToProps, {
+    addToFavorites, 
+})(ComicDetail);

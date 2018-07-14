@@ -5,7 +5,9 @@ const initialState = {
     loading: false,
     selectedId: '',
     selectedComic: {},
-    error: null
+    error: null,
+    favorites: [],
+    selectedComicFavorite: false
 };
 
 const comicsReducer = (state = initialState, action) => {
@@ -19,7 +21,18 @@ const comicsReducer = (state = initialState, action) => {
         case types.GET_COMICS_FAILED:
             return { ...state, loading: false, error: true };
         case types.SELECT_COMIC: 
-            return { ...state, selectedComic: action.payload }
+            let favorite = false;
+            if(state.favorites.indexOf(action.payload.id) !== -1){
+                favorite = true;
+            }
+            return { ...state, selectedComic: action.payload, selectedComicFavorite: favorite };
+        case types.ADD_TO_FAVORITES_COMIC:
+            if(state.favorites.indexOf(action.payload)=== -1) {
+                return { ...state, favorites: [...state.favorites, action.payload,], selectedComicFavorite: true };
+            } else {
+                const newFavorites = state.favorites.filter(id => id !== action.payload);
+                return {...state, favorites: newFavorites, selectedComicFavorite: false}
+            }
         default: 
             return state;
     }
