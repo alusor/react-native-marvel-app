@@ -1,17 +1,23 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import styled from 'styled-components';
-import { View } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import Container from '../Components/Container'; 
 import Header from '../Components/Header';
+import { Title, Content, ComicCard } from '../Components/UtilComponents';
+
 
 const ComicDetail = (props) => {
+    const { comic } = props;
     return (
-        <View style={{ flex:1 }}>
-            <Header leftAction={() => props.navigation.goBack()} left color='transparent' title={props.comic.title} />
             <Container>
+            <Header leftAction={() => props.navigation.goBack()} left color='transparent' />
+                <Content>   
+                    <View style={{ flexDirection: 'row' }}>
+                    <Title>{comic.title}</Title>
+                    <ComicCard source={{ uri: `${comic.thumbnail.path}/portrait_uncanny.${comic.thumbnail.extension}`}} />
+                    </View>
+                </Content>
             </Container>
-        </View>
         );
 };
 

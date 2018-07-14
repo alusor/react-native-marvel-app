@@ -5,6 +5,8 @@ import Container from '../Components/Container'
 import Header from '../Components/Header';
 import { connect } from 'react-redux';
 import { Button } from 'react-native';
+import { Content } from '../Components/UtilComponents';
+
 
 const Text = styled.Text`
     color: white;
@@ -24,10 +26,7 @@ const Bottom = styled.View`
     justify-content: center;
     margin-bottom: 30px;
 `;
-const Content = styled.View`
-    margin-horizontal: 15px;
-    flex: 1;
-`;
+
 const Account = (props) => {
     const { _user } = props.user.user; 
     return (

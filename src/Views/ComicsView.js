@@ -7,6 +7,8 @@ import Container from '../Components/Container';
 import Header from '../Components/Header';
 import Card from '../Components/ComicCard';
 import { AnimatedLogo } from './Splash/Splash.styled';
+import { ComicCard } from '../Components/UtilComponents';
+
 
 class ComicsView extends Component {
     componentDidMount() {
@@ -65,13 +67,7 @@ export default connect(mapStateToProps, {
     selectComic
  })(ComicsView);
 
- const ComicCard = styled.ImageBackground`
-    width: 150px;
-    height: 250px;
-    margin: 5px;
-    border-radius: 6px;
-    
- `;
+
  const Touchable = styled.TouchableOpacity`
     background-color: rgba(0,0,0,0.5);
     flex: 1;

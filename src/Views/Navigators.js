@@ -12,22 +12,15 @@ const comic = require('../Icons/comic.png');
 const favorites = require('../Icons/favorites.png');
 const account = require('../Icons/account.png');
 
-const ComicsNavigator = createStackNavigator({
-    Comics,
-    ComicDetail
-}, {
-    headerMode: 'none'
-});
-
-
-ComicsNavigator.navigationOptions = {
-    tabBarLabel: 'Comics',
-    tabBarIcon: ({tintColor}) => (
-        <Image style={{ tintColor, width: 24, height: 24 }} source={ comic }/>
-    )
-}
 const Tab = createBottomTabNavigator({
-    ComicsNavigator,
+    comics: {
+        screen: Comics, navigationOptions: {
+            tabBarLabel: 'Comics',
+            tabBarIcon: ({tintColor}) => (
+                <Image style={{ tintColor, width: 24, height: 24 }} source={ comic }/>
+            ) 
+        }
+    },
     favorites: { screen: Favorites, navigationOptions: {
         tabBarLabel: 'Favoritos',
         tabBarIcon: ({tintColor}) => (
@@ -64,6 +57,7 @@ const Tab = createBottomTabNavigator({
 const MainStack = createStackNavigator({
     Login,
     Splash,
+    ComicDetail,
     Tab
 }, {
     headerMode: 'none'
