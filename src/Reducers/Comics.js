@@ -23,18 +23,17 @@ const comicsReducer = (state = initialState, action) => {
         case types.SELECT_COMIC: 
             let favorite = false;
             state.favorites.filter(comic => comic.id === action.payload.id? favorite=true:null );
-            /*if(state.favorites.indexOf(action.payload) !== -1){
-                favorite = true;
-            }*/
             return { ...state, selectedComic: action.payload, selectedComicFavorite: favorite };
         case types.ADD_TO_FAVORITES_COMIC:
-            if(state.favorites.indexOf(action.payload)=== -1) {
-                return { ...state, favorites: [...state.favorites, action.payload,], selectedComicFavorite: true };
-            } else {
-                const newFavorites = state.favorites.filter(id => id !== action.payload);
+            let exist = false;
+            state.favorites.filter(comic => comic.id === action.payload.id? exist=true:null );
+            if(exist){
+                const newFavorites = state.favorites.filter(comic => comic.id !== action.payload.id);
                 return {...state, favorites: newFavorites, selectedComicFavorite: false}
+            } else {
+                return { ...state, favorites: [...state.favorites, action.payload,], selectedComicFavorite: true };
             }
-        
+            
         default: 
             return state;
     }
