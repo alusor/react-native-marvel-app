@@ -1,21 +1,32 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {connect} from 'react-redux';
-import { ScrollView, View } from 'react-native';
+import { ScrollView, View, Linking, Button } from 'react-native';
 import Container from '../Components/Container'; 
 import Header from '../Components/Header';
-import { Title, Content, ComicCard } from '../Components/UtilComponents';
+import { Title, Content, ComicCard, Text } from '../Components/UtilComponents';
 
 
 const ComicDetail = (props) => {
     const { comic } = props;
+    console.log(comic);
     return (
             <Container>
             <Header leftAction={() => props.navigation.goBack()} left color='transparent' />
-                <Content>   
+                <Content>
+                    <ScrollView>
                     <View style={{ flexDirection: 'row' }}>
-                    <Title>{comic.title}</Title>
-                    <ComicCard source={{ uri: `${comic.thumbnail.path}/portrait_uncanny.${comic.thumbnail.extension}`}} />
+                        <View style={{ flex: 1 }}>
+                            <Title>{comic.title}</Title>
+                            
+                            <Button color='#f0141e' title='Visitar sitio' onPress={() => Linking.openURL(comic.urls[0].url)} />
+                        </View>
+                        <View style={{ flex: 1 }}>
+                            <ComicCard source={{ uri: `${comic.thumbnail.path}/portrait_uncanny.${comic.thumbnail.extension}`}} />
+                        </View>
                     </View>
+                    <Text>{comic.description}</Text>
+
+                    </ScrollView>
                 </Content>
             </Container>
         );
