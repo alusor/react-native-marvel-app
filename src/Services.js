@@ -29,7 +29,12 @@ async function getFavorites() {
     const user = firebase.auth().currentUser;
     console.log(user.uid);
     const tmp = await ref.collection('Favoritos').doc(user.uid).get();
-    return Object.values(tmp.data());
+    try{
+        return Object.values(tmp.data());
+    } catch(e){
+        console.log(e);
+        return [];
+    }
 }
 
 export {getComics, setFavorites, getFavorites}
