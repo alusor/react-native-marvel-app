@@ -37,3 +37,6 @@
 - Configuración de acceso al API de google console para la publicación automatica.
 - Se publico una primera versión de la app manualmente, posteriormente cada commit creara un build y publicara en release en Google Play
 
+
+
+Data provided by Marvel. © 2014 Marvel

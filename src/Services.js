@@ -18,11 +18,18 @@ async function getComics() {
 }
 
 async function setFavorites(data) {
+    console.log(data);
     const user = firebase.auth().currentUser;
     console.log(user.uid);
-    const tmp = ref.collection('Favoritos').doc(user.uid);
+    const tmp = await ref.collection('Favoritos').doc(user.uid).set(data);
     console.log(tmp)
 
 }
+async function getFavorites() {
+    const user = firebase.auth().currentUser;
+    console.log(user.uid);
+    const tmp = await ref.collection('Favoritos').doc(user.uid).get();
+    return Object.values(tmp.data());
+}
 
-export {getComics, setFavorites}
+export {getComics, setFavorites, getFavorites}

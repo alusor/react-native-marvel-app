@@ -91,11 +91,10 @@ async function logout() {
 function * userLogout() {
   yield call(logout);
   yield put(StackActions.popToTop());
-  
 }
 
 export function * loginSaga() {
       yield takeEvery(session.types.USER_LOGIN, userLogin);
       yield takeEvery(session.types.USER_LOGIN_COMPLETE, completeLogin);
       yield takeEvery(session.types.USER_LOGOUT, userLogout);
-  }
+}

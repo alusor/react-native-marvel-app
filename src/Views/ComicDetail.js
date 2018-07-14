@@ -32,7 +32,7 @@ const ComicDetail = (props) => {
                                 <Icon size={30} color={color} name='md-heart' />
                                 </TouchableOpacity>
                                 <TouchableOpacity onPress={() => share(comic.title,comic.urls[0].url)}>
-                                <Icon size={30} color='#f0141e' name='md-share' />
+                                <Icon size={30} color='white' name='md-share' />
                                 </TouchableOpacity>
                             </View>
                             <Button color='#f0141e' title='Visitar sitio' onPress={() => Linking.openURL(comic.urls[0].url)} />

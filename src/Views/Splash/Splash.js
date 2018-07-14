@@ -3,6 +3,10 @@ import { StatusBar } from 'react-native';
 import { connect } from 'react-redux';
 import Container from '../../Components/Container';
 import { AnimatedLogo } from './Splash.styled';
+import firebase from 'react-native-firebase';
+import  sesion from '../../Actions/Session';
+
+
 class Splash extends Component {
     
     async componentDidMount() {
@@ -15,6 +19,7 @@ class Splash extends Component {
                 // User has rejected permissions
             }
         }
+        this.props.checkUserSesion();
     }
     render() {
         return (
@@ -27,4 +32,10 @@ class Splash extends Component {
     
 };
 
-export default connect()(Splash);
+const mapStateToProps = state => {
+    return { ...state.Session }
+};
+
+const { checkUserSesion } = sesion.creators;
+
+export default connect(mapStateToProps, { checkUserSesion })(Splash);
