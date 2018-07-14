@@ -13,6 +13,12 @@ const Title = styled.Text`
     font-family: "Poppins-Bold";
     font-size: 18px;
 `;
+const Copy = styled.Text`
+    color: white;
+    font-family: "Poppins-Regular";
+    font-size: 10px;
+    text-align: center;
+`;
 const Content = styled.View`
     margin-horizontal: 15px;
     flex: 1;
@@ -22,10 +28,21 @@ const Text = styled.Text`
     font-family: "Poppins-Regular";
     font-size: 16px;
 `;
+const Button = styled.TouchableOpacity`
+    background-color: #f0141e;
+    font-size: 16px;
+    border-radius: 4px;
+    elevation: 1;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+`;
 
 export {
     Title,
     Content,
     ComicCard,
-    Text
+    Text,
+    Copy,
+    Button
 };

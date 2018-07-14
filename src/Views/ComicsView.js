@@ -7,7 +7,7 @@ import Container from '../Components/Container';
 import Header from '../Components/Header';
 import Card from '../Components/ComicCard';
 import { AnimatedLogo } from './Splash/Splash.styled';
-import { ComicCard } from '../Components/UtilComponents';
+import { ComicCard, Copy } from '../Components/UtilComponents';
 
 
 class ComicsView extends Component {
@@ -51,6 +51,7 @@ class ComicsView extends Component {
                         onEndReached={() => console.log('cargar mas')}
                         ListFooterComponent={this.renderFooter}
                     />
+                    <Copy>Data provided by Marvel. © 2014 Marvel</Copy>
                 </Container>
         );
     }

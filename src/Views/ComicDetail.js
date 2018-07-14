@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import { ScrollView, View, Linking, Button } from 'react-native';
 import Container from '../Components/Container'; 
 import Header from '../Components/Header';
-import { Title, Content, ComicCard, Text } from '../Components/UtilComponents';
+import { Title, Content, ComicCard, Text, Copy } from '../Components/UtilComponents';
 
 
 const ComicDetail = (props) => {
@@ -28,6 +28,7 @@ const ComicDetail = (props) => {
 
                     </ScrollView>
                 </Content>
+                <Copy>Data provided by Marvel. © 2014 Marvel</Copy>
             </Container>
         );
 };
